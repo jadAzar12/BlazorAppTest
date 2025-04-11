@@ -9,6 +9,7 @@
             <FluentProgressRing />
         </LoadingContent>
         <Content>
+            <div>Child Component 2</div>
             <ChildComponent OnSubmitFinished="@HandleSubmit"></ChildComponent>
            @*  <ChildComponent></ChildComponent> *@
             Tab two content. This is for testing.
@@ -20,7 +21,9 @@
     </FluentTab>
 
 </FluentTabs>
-<ChildComponent OnSubmitFinished="@HandleSubmit"></ChildComponent>
+
+<div>Child Component 2</div>
+<ChildComponent OnSubmitFinished="@HandleSubmit2"></ChildComponent>
 
 @code {
 
@@ -37,6 +40,12 @@
     private void HandleSubmit(bool isLoading)
     {
        
+        Console.WriteLine($"Child submited: {isLoading}");
+    }
+
+    private void HandleSubmit2(bool isLoading)
+    {
+
         Console.WriteLine($"Child submited: {isLoading}");
     }
 
