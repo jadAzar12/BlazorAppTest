@@ -1,0 +1,44 @@
+﻿@page "/ParentComponent"
+<h3>ParentComponent</h3>
+<FluentTabs @bind-ActiveTabId="@activeid" OnTabChange="HandleOnTabChange">
+    <FluentTab Label="Tab one" Icon="@(new Icons.Regular.Size24.LeafOne())" Id="tab-1">
+        Tab one content. This is for testing.
+    </FluentTab>
+    <FluentTab Label="Tab two" Id="tab-2" DeferredLoading="@DeferredLoading">
+        <LoadingContent>
+            <FluentProgressRing />
+        </LoadingContent>
+        <Content>
+            <ChildComponent OnSubmitFinished="@HandleSubmit"></ChildComponent>
+           @*  <ChildComponent></ChildComponent> *@
+            Tab two content. This is for testing.
+        </Content>
+    </FluentTab>
+    <FluentTab Label="Tab three" Id="tab-3" DeferredLoading="@DeferredLoading">
+
+        Tab three content. This is for testing.
+    </FluentTab>
+
+</FluentTabs>
+<ChildComponent OnSubmitFinished="@HandleSubmit"></ChildComponent>
+
+@code {
+
+    bool DeferredLoading = false;
+
+    string? activeid = "tab-1";
+    FluentTab? changedto;
+
+    private void HandleOnTabChange(FluentTab tab)
+    {
+        changedto = tab;
+    }
+
+    private void HandleSubmit(bool isLoading)
+    {
+       
+        Console.WriteLine($"Child submited: {isLoading}");
+    }
+
+}
+
