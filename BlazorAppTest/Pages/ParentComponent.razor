@@ -22,8 +22,8 @@
 
 </FluentTabs>
 
-<div>Child Component 2</div>
-<ChildComponent OnSubmitFinished="@HandleSubmit2"></ChildComponent>
+
+@* <ChildComponent OnSubmitFinished="@HandleSubmit"></ChildComponent> *@
 
 @code {
 
@@ -43,11 +43,6 @@
         Console.WriteLine($"Child submited: {isLoading}");
     }
 
-    private void HandleSubmit2(bool isLoading)
-    {
-
-        Console.WriteLine($"Child submited: {isLoading}");
-    }
-
+   
 }
 
